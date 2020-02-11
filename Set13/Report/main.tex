@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\begin{document}
+
+\begin{titlepage}
+	\centering 
+	\scshape
+	\vspace*{\baselineskip}
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+	\rule{\textwidth}{0.4pt} 
+	\vspace{0.75\baselineskip}
+	
+	{\Large CS 374 : Computational and Numerical Methods \\\vspace{0.75\baselineskip} Set 13}
+	\vspace{0.75\baselineskip}
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} 
+	\rule{\textwidth}{1.6pt}
+	
+	\vspace{2\baselineskip}  
+	Stability of the Euler and the Backward Euler Method
+	
+	\vspace*{3\baselineskip}
+	
+	\vspace{0.5\baselineskip} %originally 0.5
+	
+	{\scshape\large Purvil Mehta (201701073) \\ Bhargey Mehta (201701074) \\} 
+	
+	\vspace{1\baselineskip} 
+	
+	\textit{Dhirubhai Ambani Institute of Information and Communication Technology \\ Gandhinagar\\} 
+	\vspace*{2\baselineskip}
+	\today
+
+
+\end{titlepage}
+\newpage
+
+\begin{table}[!h]
+\centering{\Large
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+$h$ & $n$ & $y_n = (1+\lambda h)^n$ & $Error_{Euler}$ & $ y_n = (1-\lambda h)^{-n}$ & $Error_{Backward Euler}$\\ \hline
+0.1   & 2   & 81         & 81         & 0.0082645  & 0.0082645  \\
+0.05  & 4   & 256        & 256        & 0.0007716  & 0.0007716  \\
+0.02  & 10  & 1          & 1          & 1.6935e-05 & 1.6933e-05 \\
+0.01  & 20  & 0          & 2.0612e-09 & 9.5367e-07 & 9.5161e-07 \\
+0.001 & 200 & 7.0551e-10 & 1.3556e-09 & 5.2658e-09 & 3.2046e-09 \\
+\hline
+\end{tabular}}
+\end{table}
+
+By looking at the above trends in the errors for the euler method and the backward euler method we can say that the as step size decreases, both the methods converge to the actual value. But in the case of the euler method, it is possible that large step size show a lot of fluctuations.
+
+\end{document}
