@@ -1,0 +1,52 @@
+clear all ;
+close all;
+clc;
+
+x0=3.35;
+y0=0.298507;
+x1=3.4;
+y1=0.294118;
+x2=3.5;
+y2=0.285714;
+x3=3.6;
+y3=0.277778;
+x = 0.01:0.01:6;
+p_1 = p1(x,x0,y0,x1,y1);
+p_2 = p2(x,x0,y0,x1,y1,x2,y2);
+p_3 = p3(x,x0,y0,x1,y1,x2,y2,x3,y3);
+figure(1);
+plot(x,p_1);hold on;
+plot(x,p_2);hold on;
+plot(x,p_3);
+grid;
+legend('Linear LI','Quadratic LI','Cubic LI');
+title('Comparision of Linear, Quadratic and Cubic Langrange Interpolation');
+xlabel('x');ylabel('f(x)');
+
+n_1 = first(x0,y0,x1,y1)*(x-x0) + y0; 
+n_2 = n_1 + second(x0,y0,x1,y1,x2,y2).*(x-x0).*(x-x1);
+n_3 = n_2 + third(x0,y0,x1,y1,x2,y2,x3,y3).*(x-x0).*(x-x1).*(x-x2);
+figure(2);
+plot(x,n_1);hold on;
+plot(x,n_2);hold on;
+plot(x,n_3);
+grid;
+legend('Linear NI','Quadratic NI','Cubic NI');
+title('Comparision of Linear, Quadratic and Cubic Newton Interpolation');
+xlabel('x');ylabel('f(x)');
+
+
+figure(3);
+plot(x,n_1);hold on;
+plot(x,n_2);hold on;
+plot(x,n_3);hold on;
+plot(x,p_1);hold on;
+plot(x,p_2);hold on;
+plot(x,p_3);hold on;
+y=1./x;
+plot(x,y);
+ylim([0 2]);
+grid;
+legend('Linear NI','Quadratic NI','Cubic NI','Linear LI','Quadratic LI','Cubic LI','f(x) = 1/x');
+title('Comparision of lagrange and Newton Interpolation');
+xlabel('x');ylabel('f(x)');

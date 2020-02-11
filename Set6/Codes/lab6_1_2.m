@@ -1,0 +1,36 @@
+clear all;
+close all;
+
+x = 0:0.01:5;
+fx= sqrt(x);
+x0=1;
+y0=1;
+x1=4;
+y1=2;
+x2=0.84;
+y2=2.316367;
+
+y = p1(x,x0,y0,x1,y1); 
+figure(1);
+plot(x,y);
+hold on;
+plot(x,fx);
+grid;
+title('Comarision of Linear Interpolation with actual function f(x) = sqrt(x) ');
+legend('Linear Interpolation','Actual Function');
+xlabel('x');ylabel('f(x)');
+x=0.5:0.01:1;
+x0=0.82;
+y0=2.270500;
+x1=0.83;
+y1=2.293319;
+y = p1(x,x0,y0,x1,y1);
+ans = p2(x,x0,y0,x1,y1,x2,y2);
+fx = exp(x);
+figure(2);
+plot(x,y);hold on;
+plot(x,ans);hold on;
+plot(x,fx);grid;
+title('Comarision of Linear Interpolation with actual function f(x) = e^x ');
+legend('Linear Interpolation','Quardatic Interpolation','Actual Function');
+xlabel('x');ylabel('f(x)');
